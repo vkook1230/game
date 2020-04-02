@@ -2,42 +2,42 @@
 #include "string.h"
 #include "windows.h"
  
-#define N 49//1±íÊ¾Æå×Ó£¬Ö»ÓÐºÚÉ«Æå×Ó
+#define N 49//1è¡¨ç¤ºæ£‹å­ï¼Œåªæœ‰é»‘è‰²æ£‹å­
  
-int aa[N+2][N+2];//¶¨ÒåÆåÅÌ´óÐ¡
-int bb[N+2][N+2];//¸¨ÖúÆåÅÌ
+int aa[N+2][N+2];//å®šä¹‰æ£‹ç›˜å¤§å°
+int bb[N+2][N+2];//è¾…åŠ©æ£‹ç›˜
  
  
-void Initialize();//³õÊ¼»¯Ò»¸ö¶Ô¾Öº¯Êý
-void RunGame();//½øÐÐÓÎÏ·
-int Count(int i,int j);//¼ÆËãÉúÃüÖÜÎ§µÄÉúÃüÊýÁ¿
-void Data();//µ÷ÓÃÒÑ´æµÄÓÎÏ·Êý¾Ý
+void Initialize();//åˆå§‹åŒ–ä¸€ä¸ªå¯¹å±€å‡½æ•°
+void RunGame();//è¿›è¡Œæ¸¸æˆ
+int Count(int i,int j);//è®¡ç®—ç”Ÿå‘½å‘¨å›´çš„ç”Ÿå‘½æ•°é‡
+void Data();//è°ƒç”¨å·²å­˜çš„æ¸¸æˆæ•°æ®
  
 main()
 {
-    system("mode con cols=99 lines=50");//ÉèÖÃ´°¿Ú´óÐ¡
-    system("color 70");//ÉèÖÃÑÕÉ«
-    Initialize();//³õÊ¼»¯Ò»¸ö¶Ô¾Öº¯Êý
-    RunGame();//½øÐÐÓÎÏ·
+    system("mode con cols=99 lines=50");//è®¾ç½®çª—å£å¤§å°
+    system("color 70");//è®¾ç½®é¢œè‰²
+    Initialize();//åˆå§‹åŒ–ä¸€ä¸ªå¯¹å±€å‡½æ•°
+    RunGame();//è¿›è¡Œæ¸¸æˆ
 }
  
-void Initialize()//³õÊ¼»¯Ò»¸ö¶Ô¾Öº¯Êý
+void Initialize()//åˆå§‹åŒ–ä¸€ä¸ªå¯¹å±€å‡½æ•°
 {
-    Data();//µ÷ÓÃÒÑ´æµÄÓÎÏ·Êý¾Ý
+    Data();//è°ƒç”¨å·²å­˜çš„æ¸¸æˆæ•°æ®
 }
 
-void RunGame()//½øÐÐÓÎÏ·
+void RunGame()//è¿›è¡Œæ¸¸æˆ
 {
     int i,j,s=0;
     int flag=0;
     while(1)
-    {Sleep(1000);
-        system("cls");//ÇåÀíÆÁÄ»£¬×¼±¸Ð´Èë
+    {Sleep(2000);
+        system("cls");//æ¸…ç†å±å¹•ï¼Œå‡†å¤‡å†™å…¥
         for(i=1;i<N+1;i++)
         {
             for(j=1;j<N+1;j++)
                 if(aa[i][j]==1)
-                    printf("¡ô");
+                    printf("â—†");
                 else if(aa[i][j]==0)
                     printf("  ");
             printf("\n");
@@ -49,16 +49,16 @@ void RunGame()//½øÐÐÓÎÏ·
                 if(aa[i][j]==1)
                 {
                     if(s<2)
-                       bb[i][j]=0;//Èç¹ûÒ»¸öÉúÃüÖÜÎ§µÄÉúÃüÉÙÓÚ2¸ö£¬ËüÔÚ»ØºÏ½áÊøºóËÀÍö¡£
+                       bb[i][j]=0;//å¦‚æžœä¸€ä¸ªç”Ÿå‘½å‘¨å›´çš„ç”Ÿå‘½å°‘äºŽ2ä¸ªï¼Œå®ƒåœ¨å›žåˆç»“æŸåŽæ­»äº¡ã€‚
                     else if(s>3)
-                        bb[i][j]=0;//Èç¹ûÒ»¸öÉúÃüÖÜÎ§µÄÉúÃü³¬¹ý3¸ö£¬ËüÔÚ»ØºÏ½áÊøºóËÀÍö¡£
+                        bb[i][j]=0;//å¦‚æžœä¸€ä¸ªç”Ÿå‘½å‘¨å›´çš„ç”Ÿå‘½è¶…è¿‡3ä¸ªï¼Œå®ƒåœ¨å›žåˆç»“æŸåŽæ­»äº¡ã€‚
                     else if(s==2||s==3)
-                        bb[i][j]=1;//Èç¹ûÒ»¸öÉúÃüÖÜÎ§ÓÐ2»ò3¸öÉúÃü£¬ËüÔÚ»ØºÏ½áÊøÊ±±£³ÖÔ­Ñù¡£
+                        bb[i][j]=1;//å¦‚æžœä¸€ä¸ªç”Ÿå‘½å‘¨å›´æœ‰2æˆ–3ä¸ªç”Ÿå‘½ï¼Œå®ƒåœ¨å›žåˆç»“æŸæ—¶ä¿æŒåŽŸæ ·ã€‚
                 }
                 else if(aa[i][j]==0)
                 {
                     if(s==3)
-                       bb[i][j]=1;//Èç¹ûÒ»¸öËÀ¸ñÖÜÎ§ÓÐ3¸öÉúÃü£¬ËüÔÚ»ØºÏ½áÊøÊ±»ñµÃÉúÃü¡£
+                       bb[i][j]=1;//å¦‚æžœä¸€ä¸ªæ­»æ ¼å‘¨å›´æœ‰3ä¸ªç”Ÿå‘½ï¼Œå®ƒåœ¨å›žåˆç»“æŸæ—¶èŽ·å¾—ç”Ÿå‘½ã€‚
                 }
             }
          for(i=1;i<N+1;i++)
@@ -74,7 +74,7 @@ void RunGame()//½øÐÐÓÎÏ·
 }
 
 
-int Count(int i,int j)//¼ÆËãÉúÃüÖÜÎ§µÄÉúÃüÊýÁ¿
+int Count(int i,int j)//è®¡ç®—ç”Ÿå‘½å‘¨å›´çš„ç”Ÿå‘½æ•°é‡
 {
     int s=0,a,b;
     for(a=-1;a<=1;a++)
@@ -85,11 +85,15 @@ int Count(int i,int j)//¼ÆËãÉúÃüÖÜÎ§µÄÉúÃüÊýÁ¿
 }
 
  
-void Data()//µ÷ÓÃÒÑ´æµÄÓÎÏ·Êý¾Ý
+void Data()//è°ƒç”¨å·²å­˜çš„æ¸¸æˆæ•°æ®
 {
     int p=12;
     int l;
     for(l=-16;l<=16;l++)
         //if(l!=-8&&l!=0&&l!=4)
        aa[N/2+1][N/2+1+l]=1;
+ /*
+//æ»‘ç¿”æœº
+aa[1][3]=1;aa[2][1]=1;aa[2][3]=1;aa[3][2]=1;aa[3][3]=1;
+*/
  }
