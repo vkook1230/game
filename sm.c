@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "string.h"
 #include "windows.h"
+#include "time.h"
  
 #define N 49//1表示棋子，只有黑色棋子
  
@@ -16,9 +17,10 @@ void Data();//调用已存的游戏数据
 main()
 {
     system("mode con cols=99 lines=50");//设置窗口大小
-    system("color 70");//设置颜色
+    system("color 80");//设置颜色
     Initialize();//初始化一个对局函数
     RunGame();//进行游戏
+
 }
  
 void Initialize()//初始化一个对局函数
@@ -31,15 +33,15 @@ void RunGame()//进行游戏
     int i,j,s=0;
     int flag=0;
     while(1)
-    {Sleep(2000);
+    {Sleep(100);
         system("cls");//清理屏幕，准备写入
         for(i=1;i<N+1;i++)
         {
             for(j=1;j<N+1;j++)
                 if(aa[i][j]==1)
-                    printf("◆");
+                    printf("■");
                 else if(aa[i][j]==0)
-                    printf("  ");
+                    printf("□");
             printf("\n");
         }
         for(i=1;i<N+1;i++)
@@ -86,25 +88,8 @@ int Count(int i,int j)//计算生命周围的生命数量
 
  
 void Data()//调用已存的游戏数据
-{
-    int p=12;
-    int l;
-    for(l=-16;l<=16;l++)
-        //if(l!=-8&&l!=0&&l!=4)
-       aa[N/2+1][N/2+1+l]=1;
- /*
-//滑翔机
-aa[1][3]=1;aa[2][1]=1;aa[2][3]=1;aa[3][2]=1;aa[3][3]=1;
-*/
- /*
-//高斯帕滑翔机
- aa[1][p+11]=1;aa[1][p+13]=1;
-aa[2][p+10]=1;aa[2][p+13]=1;
-aa[3][p+9]=1;aa[3][p+10]=1;aa[3][p+21]=1;aa[3][p+28]=1;
-aa[4][p+1]=1;aa[4][p+2]=1;aa[4][p+7]=1;aa[4][p+8]=1;aa[4][p+12]=1;aa[4][p+21]=1;aa[4][p+27]=1;aa[4][p+29]=1;
-aa[5][p+1]=1;aa[5][p+2]=1;aa[5][p+9]=1;aa[5][p+10]=1;aa[5][p+20]=1;aa[5][p+27]=1;a[5][p+28]=1;aa[5][p+30]=1;
-aa[6][p+10]=1;aa[6][p+13]=1;aa[6][p+16]=1;aa[6][p+17]=1;aa[6][p+27]=1;aa[6][p+28]=1;chess[6][p+30]=1;chess[6][p+31]=1;chess[6][p+35]=1;chess[6][p+36]=1;
-aa[7][p+11]=1;aa[7][p+13]=1;aa[7][p+16]=1;aa[7][p+19]=1;aa[7][p+20]=1;aa[7][p+21]=1;aa[7][p+22]=1;aa[7][p+27]=1;aa[7][p+28]=1;aa[7][p+30]=1;aa[7][p+35]=1;aa[7][p+36]=1;
-aa[8][p+16]=1;aa[8][p+17]=1;aa[8][p+18]=1;aa[8][p+19]=1;aa[8][p+27]=1;aa[8][p+29]=1;
-aa[9][p+17]=1;aa[9][p+18]=1;aa[9][p+28]=1;
- */}
+{   int i,j;
+    for(i=0;i<N;i++){
+        for(j=0;j<N;j++)
+			aa[i][j]=rand()%2;}
+}
